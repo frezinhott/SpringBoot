@@ -1,0 +1,74 @@
+package io.chase.springbootquickstart.course;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * @Service marks this class as a business service.  This service acts as a singleton having only one instance.
+ * 
+ * @author Trevor Chase
+ *
+ */
+
+@Service
+public class CourseService {
+	
+	/**
+	 * @Autowired - specifies that this variable needs dependency injection.  
+	 * Automatically creates a single instance of TopicRepository when this class is accessed.
+	 */
+	@Autowired
+	private CourseRepository courseRepository;
+	
+	/**
+	 * Get all Topics in the DB
+	 * @return List<Topic>
+	 */
+	public List<Course> getAllCourses() {
+		List<Course> courses = new ArrayList<>();
+		
+		/**
+		 * .findAll()  - finds all topics in the DB
+		 * .forEach()  - iterates through each course
+		 * topics::add - A method reference that adds the current course to the courses list
+		 */
+		courseRepository.findAll().forEach(courses::add);
+		return courses;
+	}
+	
+	/**
+	 * Get a single Course
+	 * @return Course
+	 */
+	public Course getCourse(String id) {
+		return courseRepository.findOne(id);
+	}
+
+	/**
+	 * Adds a course to the topics list
+	 */
+	public void addTopic(Course course) {
+		courseRepository.save(course);
+	}
+
+	/**
+	 * Updates a course to the topics list
+	 */
+	public void updateCourse(String id, Course course) {
+		
+		// .save() will check to see if the primary key exists.  If it does, it will perform an update.
+		courseRepository.save(course);
+	}
+
+	/**
+	 * Removes a course from the topics list
+	 */
+	public void deleteCourse(String id) {
+		
+		courseRepository.delete(id);
+	}
+
+}

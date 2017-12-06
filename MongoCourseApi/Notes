@@ -1,0 +1,119 @@
+Other ways to create a Spring Boot project...
+
+MAVEN
+New >> Maven Project - You have to manually update the POM to set up the parent and dependencies
+
+SPRING INITIALIZR - Gives you a UI to choose the components that you want to add to your spring project
+http://start.spring.io
+
+Spring Tool Suite (STD IDE) - Gives you a UI to choose the components that you want to add to your spring project
+New >> Spring Starter Project
+
+--------------------------------------------------------------------------------
+
+To configure a Spring Boot project...
+
+Create an application.properties file in src/main/resources
+
+Common application properties:
+http://docs.spring.io
+
+--------------------------------------------------------------------------------
+
+Spring Data JPA (Java Persistence API)
+A specification that lets you do ORM (Object Relational Mapping) to a relational Database
+
+Add it under...
+New >> Spring Starter Project
+			SQL >> JPA -- Adds JPA
+			Web >> Web -- Adds web support
+			
+--------------------------------------------------------------------------------
+			
+Deployment:
+
+C:\Users\Trevor Chase\Spring\course-api>mvn clean install
+
+Output JAR file:
+C:\Users\Trevor Chase\Spring\course-api\target\course-api-0.0.1-SNAPSHOT.jar
+
+Running the jar:
+cd C:\Users\Trevor Chase\Spring\course-api\target
+java -jar course-api-0.0.1-SNAPSHOT.jar
+
+--------------------------------------------------------------------------------
+
+Actuator:
+
+Allows you to run the following URL to view the health of your service.  
+The port can be changed by updating the application.properties management.port=[port number]
+
+http://localhost:8080/health
+
+OUTPUT Example:
+{
+    "status": "UP",
+    "diskSpace": {
+        "status": "UP",
+        "total": 985734836224,
+        "free": 870481842176,
+        "threshold": 10485760
+    },
+    "db": {
+        "status": "UP",
+        "database": "Apache Derby",
+        "hello": 1
+    }
+}
+
+Other Actuator Endpoints can be found here in section 47 (Endpoints)
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready
+
+actuator
+Provides a hypermedia-based “discovery page” for the other endpoints. Requires Spring HATEOAS to be on the classpath.
+
+auditevents
+Exposes audit events information for the current application.
+
+autoconfig
+Displays an auto-configuration report showing all auto-configuration candidates and the reason why they ‘were’ or ‘were not’ applied.
+
+beans
+Displays a complete list of all the Spring beans in your application.
+
+configprops
+Displays a collated list of all @ConfigurationProperties
+
+dump
+Performs a thread dump.
+
+env
+Exposes properties from Spring’s ConfigurableEnvironment
+
+flyway
+Shows any Flyway database migrations that have been applied.
+
+health
+Shows application health information (when the application is secure, a simple ‘status’ when accessed over an unauthenticated 
+connection or full message details when authenticated).
+
+info
+Displays arbitrary application info.
+
+loggers
+Shows and modifies the configuration of loggers in the application.
+
+liquibase
+Shows any Liquibase database migrations that have been applied.
+
+metrics
+Shows ‘metrics’ information for the current application.
+
+mappings
+Displays a collated list of all @RequestMapping paths.
+
+shutdown
+Allows the application to be gracefully shutdown (not enabled by default).
+
+trace
+Displays trace information (by default the last 100 HTTP requests).

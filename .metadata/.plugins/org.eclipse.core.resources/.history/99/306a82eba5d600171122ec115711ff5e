@@ -1,0 +1,82 @@
+package io.chase.springbootquickstart.course;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * @Service marks this class as a business service.  This service acts as a singleton having only one instance.
+ * 
+ * @author Trevor Chase
+ *
+ */
+
+@Service
+public class CourseService {
+	
+	/**
+	 * @Autowired - specifies that this variable needs dependency injection.  
+	 * Automatically creates a single instance of TopicRepository when this class is accessed.
+	 */
+	@Autowired
+	private CourseRepository courseRepository;
+	
+	/**
+	 * Get all Topics in the DB
+	 * @param id 
+	 * @return List<Course>
+	 */
+	public List<Course> getAllCourses(String topicId) {
+		List<Course> courses = new ArrayList<>();
+System.out.println("IN getAllCourses()");	
+		courses = courseRepository.findByTopicId(topicId);
+		for(Course course : courses) {
+System.out.println("course id: " + course.getId());
+System.out.print("course name: " + course.getName());
+System.out.println("course description: " + course.getDescription());
+		}
+
+		/**
+		 * .findByTopicId(topicId)()  - finds all courses related to a topic in the DB
+		 * .forEach()  - iterates through each course
+		 * courses::add - A method reference that adds the current course to the courses list
+		 */
+		courseRepository.findByTopicId(topicId).forEach(courses::add);
+		return courses;
+	}
+	
+	/**
+	 * Get a single Course
+	 * @return Course
+	 */
+	public Course getCourse(String id) {
+		return courseRepository.findOne(id);
+	}
+
+	/**
+	 * Adds a course to the courses list
+	 */
+	public void addCourse(Course course) {
+		courseRepository.save(course);
+	}
+
+	/**
+	 * Updates a course to the topics list
+	 */
+	public void updateCourse(Course course) {
+		
+		// .save() will check to see if the primary key exists.  If it does, it will perform an update.
+		courseRepository.save(course);
+	}
+
+	/**
+	 * Removes a course from the topics list
+	 */
+	public void deleteCourse(String id) {
+		
+		courseRepository.delete(id);
+	}
+
+}

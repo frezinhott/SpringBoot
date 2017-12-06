@@ -1,0 +1,10 @@
+io\chase\springbootquickstart\course\Course.class
+io\chase\springbootquickstart\topic\TopicRepository.class
+io\chase\springbootquickstart\course\CourseService.class
+io\chase\springbootquickstart\topic\Topic.class
+io\chase\springbootquickstart\topic\TopicController.class
+io\chase\springbootquickstart\course\CourseController.class
+io\chase\springbootquickstart\hello\HelloController.class
+io\chase\springbootquickstart\topic\TopicService.class
+io\chase\springbootquickstart\course\CourseRepository.class
+io\chase\springbootquickstart\CourseApiApp.class

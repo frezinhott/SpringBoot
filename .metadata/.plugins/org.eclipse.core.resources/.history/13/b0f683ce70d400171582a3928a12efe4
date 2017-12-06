@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.chase.springbootquickstart</groupId>
+  <artifactId>course-api</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>Java Course API</name>
+  
+  <!-- 	Makes the project a child of the spring boot project.  Is a parent configuration.  
+  		Tells Maven what version of dependencies that are available for this configuration (Bill of Materials).  
+  		The jars will not be added without the <dependencies> configurations -->
+  <parent>
+  	<groupId>org.springframework.boot</groupId>
+  	<artifactId>spring-boot-starter-parent</artifactId>
+  	<version>1.4.2.RELEASE</version>
+  </parent>
+  
+  <!-- 	Adds the jars for a spring web project.  
+  		The default servlet container is Tomcat but can be changed with adding other dependencies  -->
+  <dependencies>
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-web</artifactId>
+  	</dependency>
+ 
+  <!-- 	Add JPA that lets you do ORM (Object Relational Mapping) to a relational Database -->
+   	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-data-jpa</artifactId>
+  	</dependency>
+  		
+   <!-- Adds Spring Boot Actuator that helps monitor and manage your application -->
+   	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-actuator</artifactId>
+  	</dependency>
+  	
+  <!-- Adds the embedded derby database -->
+    <dependency>
+  		<groupId>org.apache.derby</groupId>
+  		<artifactId>derby</artifactId>
+  		<scope>runtime</scope>
+  	</dependency>
+  	
+  	<!-- Add MongoDB to the project -->
+    <dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongodb-driver</artifactId>
+    </dependency>
+  	
+  </dependencies>
+  
+  <properties>
+  	<!-- Updates the Java version to 1.8 -->
+  	<java.version>1.8</java.version>
+  	
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+  
+  <!-- Lets java know what the main class is to run -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+  
+</project>

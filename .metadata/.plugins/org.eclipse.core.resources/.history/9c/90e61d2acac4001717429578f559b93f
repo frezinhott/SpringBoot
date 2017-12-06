@@ -1,0 +1,36 @@
+package io.chase.springbootquickstart.course;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+/**
+ * This interface handles the CRUD operations for a Topic. No body needed.
+ * 
+ * CrudRepository<[model, [primary key type]>
+ * 
+ * @author Trevor Chase
+ *
+ */
+public interface CourseRepository extends CrudRepository<Course, String> {
+	
+	/**
+	 * Spring JPA will  automatically inject functionality into this interface by looking at the method name!
+	 * No implementation necessary!!
+	 * 
+	 * method naming conventions:
+	 * find - search the Repository
+	 * By - filter by
+	 * [Property name] - the class property name that you want to filter by
+	 */
+	public List<Course> findByName(String name);
+	public List<Course> findByDescription(String description);
+	
+	/**
+	 * find - search the Repository
+	 * By - filter by
+	 * [Object] - the class property object that you want to filter by
+	 * [Object id] - the primary key of the referecned object
+	 */
+	public List<Course> findByTopicId(String id);
+}
